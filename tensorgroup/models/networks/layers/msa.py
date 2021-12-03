@@ -109,10 +109,7 @@ class FeedForward(Layer):
 
 
 class TransformerBlock(Layer):
-    def __init__(self, embed_dim, num_heads, hidden_dim, dropout=0.1):
-        """
-        这个DroupOut有用吗？
-        """
+    def __init__(self, embed_dim, num_heads, hidden_dim):
         super(TransformerBlock, self).__init__()
         self.res_msa = Residual(PreNorm(MultiHeadSelfAttention(embed_dim, num_heads)))
         self.res_mlp = Residual(PreNorm(FeedForward(embed_dim, hidden_dim)))
